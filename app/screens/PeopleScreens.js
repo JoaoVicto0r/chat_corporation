@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-
+import BottomTabs from "../../components/bottomTabs";
 export default function ChatScreen() {
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState("Chats");
@@ -14,7 +14,7 @@ export default function ChatScreen() {
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Chats</Text>
+        <Text style={styles.headerTitle}>People</Text>
         <View style={styles.headerIcons}>
           <TouchableOpacity style={styles.iconButton}>
             <Ionicons name="create-outline" size={24} color="#A855F7" />
@@ -41,8 +41,10 @@ export default function ChatScreen() {
       <View style={styles.content}>
         <Text style={{ color: "#aaa" }}>Nenhuma conversa ainda</Text>
       </View>
-
-      {/* Bottom Tabs */}
+   
+        <BottomTabs />
+    
+      {/* Bottom Tabs 
       <View style={styles.bottomTabs}>
   {tabs.map((tab) => (
     <TouchableOpacity
@@ -73,8 +75,10 @@ export default function ChatScreen() {
         {tab}
       </Text>
     </TouchableOpacity>
+    
   ))}
 </View>
+*/}
     </SafeAreaView>
   );
 }

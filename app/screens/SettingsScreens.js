@@ -14,7 +14,7 @@ export default function ChatScreen() {
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Internal</Text>
+        <Text style={styles.headerTitle}>Settings</Text>
         <View style={styles.headerIcons}>
           <TouchableOpacity style={styles.iconButton}>
             <Ionicons name="create-outline" size={24} color="#A855F7" />
@@ -25,60 +25,11 @@ export default function ChatScreen() {
         </View>
       </View>
 
-      {/* Search Bar */}
-      <View style={styles.searchContainer}>
-        <Ionicons name="search-outline" size={20} color="#fff" style={{ marginRight: 8 }} />
-        <TextInput
-          placeholder="Search"
-          placeholderTextColor="#fff"
-          value={search}
-          onChangeText={setSearch}
-          style={styles.searchInput}
-        />
-      </View>
-
-      {/* Content */}
       <View style={styles.content}>
-        <Text style={{ color: "#aaa" }}>Nenhuma conversa ainda</Text>
+       
       </View>
     
         <BottomTabs />
-    
-      {/* Bottom Tabs 
-      <View style={styles.bottomTabs}>
-  {tabs.map((tab) => (
-    <TouchableOpacity
-      key={tab}
-      onPress={() => {
-        setActiveTab(tab); 
-        if (tab === "Chats") router.push("/chat");       
-        else if (tab === "Internal") router.push("/internal"); 
-        else if (tab === "People") router.push("/People");     
-        else if (tab === "Settings") router.push("/settings"); 
-      }}
-      style={styles.tabButton}
-    >
-      <Ionicons
-        name={
-          tab === "Chats"
-            ? "chatbubble"
-            : tab === "Internal"
-            ? "people-outline"
-            : tab === "People"
-            ? "people"
-            : "settings-outline"
-        }
-        size={24}
-        color={activeTab === tab ? "#A855F7" : "#D1C4E9"}
-      />
-      <Text style={[styles.tabText, { color: activeTab === tab ? "#A855F7" : "#D1C4E9" }]}>
-        {tab}
-      </Text>
-    </TouchableOpacity>
-    
-  ))}
-</View>
-*/}
     </SafeAreaView>
   );
 }

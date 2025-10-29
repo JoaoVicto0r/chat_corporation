@@ -6,7 +6,7 @@ export default function Internal() {
   return (
     <>
       <PeopleScreens />
-      <BottomTabs />
+      
     </>
   );
 }

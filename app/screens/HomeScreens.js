@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-
+import BottomTabs from "../../components/bottomTabs";
 export default function ChatScreen() {
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState("Chats");
@@ -41,8 +41,10 @@ export default function ChatScreen() {
       <View style={styles.content}>
         <Text style={{ color: "#aaa" }}>Nenhuma conversa ainda</Text>
       </View>
-
-      {/* Bottom Tabs */}
+    
+        <BottomTabs />
+    
+      {/* Bottom Tabs 
       <View style={styles.bottomTabs}>
   {tabs.map((tab) => (
     <TouchableOpacity
@@ -51,7 +53,7 @@ export default function ChatScreen() {
         setActiveTab(tab); 
         if (tab === "Chats") router.push("/chat");       
         else if (tab === "Internal") router.push("/internal"); 
-        else if (tab === "People") router.push("/people");     
+        else if (tab === "People") router.push("/People");     
         else if (tab === "Settings") router.push("/settings"); 
       }}
       style={styles.tabButton}
@@ -73,8 +75,10 @@ export default function ChatScreen() {
         {tab}
       </Text>
     </TouchableOpacity>
+    
   ))}
 </View>
+*/}
     </SafeAreaView>
   );
 }

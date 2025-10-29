@@ -9,9 +9,9 @@ export default function BottomTabs() {
 
   const tabs = [
     { name: "Chats", route: "/chat", icon: "chatbubble" },
-    { name: "Internal", route: "/internal", icon: "people-outline" },
-    { name: "People", route: "/people", icon: "people" },
-    { name: "Settings", route: "/settings", icon: "settings-outline" },
+    { name: "Interno", route: "/internal", icon: "people-outline" },
+    { name: "Grupos", route: "/People", icon: "people" },
+    { name: "Configuração", route: "/settings", icon: "settings-outline" },
   ];
 
   return (

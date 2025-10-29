@@ -1,106 +1,119 @@
-import React from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-
-const { width, height } = Dimensions.get("window");
-
-
-const LoginScreen = () => {
+import BottomTabs from "../../components/bottomTabs";
+export default function ChatScreen() {
+  const [search, setSearch] = useState("");
+  const [activeTab, setActiveTab] = useState("Chats");
   const router = useRouter();
 
+  const tabs = ["Chats", "Internal", "People", "Settings"];
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign in</Text>
-
-      {/* Input de Email */}
-      <Text style={styles.label}>E-mail</Text>
-      <TextInput style={styles.input} placeholder="Digite seu e-mail" placeholderTextColor="#fff" />
-
-      {/* Input de Senha */}
-      <Text style={styles.label}>Password</Text>
-      <TextInput style={styles.input} placeholder="Digite sua senha" placeholderTextColor="#fff" secureTextEntry />
-
-      {/* Botão Entrar */}
-      <TouchableOpacity style={styles.button} onPress={() => router.push("/chat")}>
-        <Text style={styles.buttonText}>Sign in</Text>
-      </TouchableOpacity>
-
-      {/* Rodapé */}
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>
-          Não tem uma conta?{"\n"}
-          <Text style={styles.footerLink}>fale conosco agora mesmo</Text>
-        </Text>
+    <SafeAreaView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Chats</Text>
+        <View style={styles.headerIcons}>
+          <TouchableOpacity style={styles.iconButton}>
+            <Ionicons name="create-outline" size={24} color="#A855F7" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconButton}>
+            <Ionicons name="options-outline" size={24} color="#A855F7" />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  );
-};
 
-export default LoginScreen;
+      {/* Search Bar */}
+      <View style={styles.searchContainer}>
+        <Ionicons name="search-outline" size={20} color="#fff" style={{ marginRight: 8 }} />
+        <TextInput
+          placeholder="Search"
+          placeholderTextColor="#fff"
+          value={search}
+          onChangeText={setSearch}
+          style={styles.searchInput}
+        />
+      </View>
+
+      {/* Content */}
+      <View style={styles.content}>
+        <Text style={{ color: "#aaa" }}>Nenhuma conversa ainda</Text>
+      </View>
+    
+        <BottomTabs />
+    
+      {/* Bottom Tabs 
+      <View style={styles.bottomTabs}>
+  {tabs.map((tab) => (
+    <TouchableOpacity
+      key={tab}
+      onPress={() => {
+        setActiveTab(tab); 
+        if (tab === "Chats") router.push("/chat");       
+        else if (tab === "Internal") router.push("/internal"); 
+        else if (tab === "People") router.push("/People");     
+        else if (tab === "Settings") router.push("/settings"); 
+      }}
+      style={styles.tabButton}
+    >
+      <Ionicons
+        name={
+          tab === "Chats"
+            ? "chatbubble"
+            : tab === "Internal"
+            ? "people-outline"
+            : tab === "People"
+            ? "people"
+            : "settings-outline"
+        }
+        size={24}
+        color={activeTab === tab ? "#A855F7" : "#D1C4E9"}
+      />
+      <Text style={[styles.tabText, { color: activeTab === tab ? "#A855F7" : "#D1C4E9" }]}>
+        {tab}
+      </Text>
+    </TouchableOpacity>
+    
+  ))}
+</View>
+*/}
+    </SafeAreaView>
+  );
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
+  container: { flex: 1, backgroundColor: "#fff" },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: 80,
-    width: width,
-    height: height,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
-  title: {
-    fontSize: 64,
-    fontWeight: "600",
-    color: "#6517c5",
-    marginBottom: 50,
-    fontFamily: "Gurajada",
-  },
-  label: {
-    fontSize: 24,
-    color: "#fff",
-    alignSelf: "flex-start",
-    marginLeft: 40,
-    marginTop: 10,
-  },
-  input: {
-    width: width * 0.77,
-    height: 50,
-    backgroundColor: "#c595ff",
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    marginBottom: 20,
-    color: "#fff",
-  },
-  button: {
-    width: width * 0.77,
-    height: 50,
-    backgroundColor: "#6517c5",
-    borderRadius: 10,
-    justifyContent: "center",
+  headerTitle: { fontSize: 24, fontWeight: "bold", color: "#A855F7" },
+  headerIcons: { flexDirection: "row" },
+  iconButton: { marginLeft: 16 },
+  searchContainer: {
+    flexDirection: "row",
     alignItems: "center",
-    marginTop: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    backgroundColor: "#A855F7",
+    marginHorizontal: 16,
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    marginBottom: 8,
   },
-  buttonText: {
-    fontSize: 25,
-    fontWeight: "600",
-    color: "#fff",
-    fontFamily: "Gurajada",
+  searchInput: { flex: 1, color: "#fff" },
+  content: { flex: 1, justifyContent: "center", alignItems: "center" },
+  bottomTabs: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingVertical: 12,
+    borderTopWidth: 1,
+    borderTopColor: "#eee",
   },
-  footer: {
-    position: "absolute",
-    bottom: 50,
-    alignItems: "center",
-  },
-  footerText: {
-    fontSize: 24,
-    color: "purple",
-    textAlign: "center",
-  },
-  footerLink: {
-    fontWeight: "bold",
-  },
+  tabButton: { alignItems: "center" },
+  tabText: { fontSize: 12, marginTop: 4 },
 });
